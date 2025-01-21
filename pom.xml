@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.siupay.core</groupId>
+    <artifactId>payment-core</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+
+    <name>payment-core</name>
+    <description>Payment project</description>
+
+    <parent>
+        <groupId>com.siupay</groupId>
+        <artifactId>base-parent</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <payment-core-api.version>1.0.0-SNAPSHOT</payment-core-api.version>
+        <payment-core-dal.vesrion>1.0.0-SNAPSHOT</payment-core-dal.vesrion>
+        <payment-core-common.version>1.0.0-SNAPSHOT</payment-core-common.version>
+        <payment-common-lib.version>1.0.0-SNAPSHOT</payment-common-lib.version>
+        <payment-instrument-api.version>1.0.1-SNAPSHOT</payment-instrument-api.version>
+        <channel-core-api.version>1.0.0-SNAPSHOT</channel-core-api.version>
+        <notify-center-api.version>1.1.9-SNAPSHOT</notify-center-api.version>
+        <deposit-common-service-facade.version>0.0.11-SNAPSHOT</deposit-common-service-facade.version>
+        <risk-adaptor-api.version>1.4.0-SNAPSHOT</risk-adaptor-api.version>
+        <currency-conversion-api.version>1.0.0-SNAPSHOT</currency-conversion-api.version>
+        <payment-accounting-common-service-facade.version>1.0.0-SNAPSHOT</payment-accounting-common-service-facade.version>
+        <payment-fee-engine-common-service-facade.version>1.1.9-SNAPSHOT</payment-fee-engine-common-service-facade.version>
+        <data-center-collection.version>0.0.1-SNAPSHOT</data-center-collection.version>
+        <data-center-api.version>1.0.3-SNAPSHOT</data-center-api.version>
+    </properties>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-test</artifactId>
+                <version>5.0.8.RELEASE</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>mybatis-plus-boot-starter</artifactId>
+                <version>3.5.1</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <!-- 发布到运程仓库 -->
+    <distributionManagement>
+        <repository>
+            <id>siupay</id>
+            <name>maven-public</name>
+            <url>http://43.204.129.228081/repository/maven-public/</url>
+        </repository>
+        <snapshotRepository>
+            <id>siupay</id>
+            <name>maven-snapshot</name>
+            <url>http://43.204.129.22:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
+    <build>
+        <testSourceDirectory>${project.basedir}/src/test/java</testSourceDirectory>
+        <plugins>
+            <!-- 用于产生git的版本信息 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0-M5</version>
+                <configuration>
+                    <skipTests>false</skipTests>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.7.0.1746</version>
+            </plugin>
+
+            <!-- 用于产生git的版本信息 -->
+<!--            <plugin>-->
+<!--                <groupId>pl.project13.maven</groupId>-->
+<!--                <artifactId>git-commit-id-plugin</artifactId>-->
+<!--                <executions>-->
+<!--                    <execution>-->
+<!--                        <goals>-->
+<!--                            <goal>revision</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+<!--                </executions>-->
+<!--                <configuration>-->
+<!--                    <dotGitDirectory>${project.basedir}/.git</dotGitDirectory>-->
+<!--                    <verbose>false</verbose>-->
+<!--                </configuration>-->
+<!--            </plugin>-->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.4</version>
+                <executions>
+                    <execution>
+                        <id>prepare-agent</id>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>report</id>
+                        <phase>prepare-package</phase>
+                        <goals>
+                            <goal>report</goal>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>post-unit-test</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                        <configuration>
+                            <dataFile>target/jacoco.exec</dataFile>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <modules>
+        <module>./app/payment-core-api</module>
+        <module>./app/payment-core-server</module>
+        <module>./app/payment-core-dal</module>
+        <module>./app/payment-core-common</module>
+    </modules>
+</project>

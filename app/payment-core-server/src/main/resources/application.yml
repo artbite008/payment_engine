@@ -1,0 +1,101 @@
+spring:
+#  datasource:
+#    url: jdbc:mysql://101.132.236.89:3011/payment_core?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&useSSL=false
+#    username: payment
+#    password: payment1234....
+#    driver-class-name: com.mysql.jdbc.Driver
+#    type: com.zaxxer.hikari.HikariDataSource
+#    hikari:
+#      minimum-idle: 5
+#      max-lifetime: 10000
+  redis:
+    timeout: 50000ms
+    lettuce:
+      pool:
+        max-active:  16 # 连接池最大连接数（使用负值表示没有限制）
+        max-idle: 8 # 连接池中的最大空闲连接
+        min-idle: 2 # 连接池中的最小空闲连接
+        max-wait: 50000ms
+    database: 0
+    host: middleware.siupay.com
+    port: 3087
+    password: payment1234....
+  main:
+    allow-bean-definition-overriding: true
+
+
+payment:
+  sensors:
+    debug: false
+    serverUrl: https://bigdata-scfx-push.siupay.plus/sa?project=default
+    bulkSize: 50
+    maxCacheSize: 3000
+    throwException: true
+  kafka:
+    consumer:
+      props:
+        bootstrap:
+          server: middleware.siupay.com:3092
+      group: kafka-group
+    producer:
+      props:
+        bootstrap:
+          server: middleware.siupay.com:3092
+
+management:
+  endpoints:
+    jmx:
+      exposure:
+        include: info, health, prometheus, eureka
+    web:
+      exposure:
+        include: info, health, prometheus, eureka
+  endpoint:
+    health:
+      show-details: when_authorized
+
+mybatis-plus:
+  mapper-locations: classpath:**/mapper/*.xml
+
+feign:
+  httpclient:
+    enabled: false
+  hystrix:
+    enabled: false
+  okhttp:
+    enabled: true
+  client:
+    config:
+      default:
+        read-timeout: 10000
+        connect-timeout: 10000
+
+hystrix:
+  threadpool:
+    default:
+      coreSize: 3
+      maximumSize: 6
+      maxQueueSize: 100
+      queueSizeRejectionThreshold: 100
+      allowMaximumSizeToDivergeFromCoreSize: true
+    currency:
+      coreSize: 3
+      maximumSize: 6
+      maxQueueSize: 100
+      queueSizeRejectionThreshold: 100
+      allowMaximumSizeToDivergeFromCoreSize: true
+  command:
+    default:
+      execution:
+        timeout:
+          enabled: true
+        isolation:
+          thread:
+            timeoutInMilliseconds: 6000
+      metrics:
+        rollingStats:
+          timeInMilliseconds: 60000
+      circuitBreaker:
+        errorThresholdPercentage: 70
+        requestVolumeThreshold: 50
+        sleepWindowInMilliseconds: 60000

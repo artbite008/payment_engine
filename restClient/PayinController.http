@@ -1,0 +1,28 @@
+### session 获取
+POST http://{{host}}:{{port}}/v1/api/payment-core/order/create
+Content-Type: application/json
+X-USER-ID: 5fa8e1f5152e9b0009a14974
+X-APP-VERSION: 2.58.3
+X-DEVICE: 1p2412
+X-DEVICE-NO: 1923
+X-DEVICE-ID: deviceId
+X-FINGER-ID: 123123442322
+X-FINGER-PID: 12901923123
+X-SYSTEM: IOS
+X-VERSION: risk
+
+{
+  "additionalData":{"appVersion":"3.58.9",
+"bizSessionId":"jtbnhm6295ed2918fddfca56caceea",
+"clientFrom":"WEB",
+"deviceId":"deviceId",
+"deviceVersion":"dversion",
+"fingerId":"123123442322",
+"fingerPid":"12901923123"},
+"confirm":{"paymentInstrumentId":"ins_2022041202103602100411330005",
+"paymentMethod":"BANK_CARD"},
+"order":{},
+"orderType":"RECHARGE",
+"paymentAmount":{"amount":100,
+"currency":"USD"}}
+

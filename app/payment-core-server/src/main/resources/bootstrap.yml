@@ -1,0 +1,61 @@
+rootArtifactId: PAYMENT-CORE
+
+spring:
+  application:
+    name: ${rootArtifactId}
+  cloud:
+    config:
+      fail-fast: false
+      discovery:
+        enabled: false
+
+server:
+  port: 10002
+  tomcat:
+    max-threads: 800
+    min-spare-threads: 200
+    accesslog:
+      enabled: true
+      rotate: true
+      directory: ${logging.path}
+
+  logback:
+    kafka:
+      bootstrap-servers: middleware.siupay.com:3092
+      topic: siupay-logs
+
+  job:
+    zookeeper: zoo1.siupay:2181,zoo2.siupay:2181,zoo3.siupay:2181
+    namespace: payment-core-elastic-job
+    baseSleepTimeMilliseconds: 2000
+    maxSleepTimeMilliseconds: 3000
+    maxRetries: 3
+    cron: 0 0/5 * * * ?
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: http://middleware.siupay.com:8080/eureka/
+#      defaultZone: http://127.0.0.1:8080/eureka
+    registry-fetch-interval-seconds: 10
+
+logging:
+  path: ~/logs/${spring.application.name}
+  level:
+    com.siupay: INFO
+
+app:
+  id: PAYMENT-CORE
+
+apollo:
+  bootstrap:
+    enabled: true
+    eagerLoad:
+      enabled: true
+  config-service: http://middleware.siupay.com:8080
+
+#解决服务名undefined问题
+jasypt:
+  encryptor:
+    bootstrap: false
