@@ -1,2 +1,2 @@
-Siupay design - payment engine
+### Payment Engine that support credit card and wallet 
 ![System Design](./desc.png)
