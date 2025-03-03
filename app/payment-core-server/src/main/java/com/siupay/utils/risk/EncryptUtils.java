@@ -13,7 +13,7 @@ import java.security.SecureRandom;
 import java.util.Base64;
 
 /**
- * @author Sucre
+ * 
  * @date 2022年03月01日
  */
 @UtilityClass

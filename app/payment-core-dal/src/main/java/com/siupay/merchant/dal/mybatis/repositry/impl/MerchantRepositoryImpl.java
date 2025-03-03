@@ -7,7 +7,7 @@ import com.siupay.merchant.dal.mybatis.repositry.MerchantRepository;
 import org.springframework.stereotype.Service;
 
 /**
- * @Author: ce.liu
+ * 
  * @Date: 2022/8/20 22:32
  */
 @Service

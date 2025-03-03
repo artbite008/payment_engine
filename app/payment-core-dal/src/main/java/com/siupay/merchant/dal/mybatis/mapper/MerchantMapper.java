@@ -5,7 +5,7 @@ import com.siupay.merchant.dal.mybatis.entity.MerchantEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 /**
- * @Author: ce.liu
+ * 
  * @Date: 2022/8/20 22:29
  */
 @Mapper

@@ -3,7 +3,7 @@ package com.siupay.facade.client.dto;
 import lombok.Data;
 
 /**
- * @author Sucre
+ * 
  * @date 2022年01月26日
  */
 @Data

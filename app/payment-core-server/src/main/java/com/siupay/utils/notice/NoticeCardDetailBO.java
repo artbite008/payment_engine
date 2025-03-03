@@ -6,7 +6,7 @@ import lombok.Data;
 /**
  * payment-core
  *
- * @author uther.chen
+ * 
  * @description: 消息的card信息包包装
  */
 @Data

@@ -5,7 +5,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 
 /**
- * @author: Uther Chen
+ * 
  * @description: deposit 配置参数
  * @create: 2022/4/29 15:14
  **/

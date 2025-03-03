@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 /**
- * @Author: ce.liu
+ * 
  * @Date: 2022/8/20 23:02
  */
 @FeignClient(name ="PAYMENT-CORE", contextId = "AdminMerchantQueryApi")

@@ -5,7 +5,7 @@ import com.siupay.merchant.front.dto.MerchantCountDto;
 import com.siupay.merchant.front.dto.request.MerchantCountQueryRequest;
 
 /**
- * @Author: ce.liu
+ * 
  * @Date: 2022/8/21 21:55
  */
 public interface MerchantQueryService {

@@ -6,7 +6,7 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 
 /**
- * @author Sucre
+ * 
  * @date 2022年01月26日
  */
 @FeignClient("${application.ucenter:UCENTER}")

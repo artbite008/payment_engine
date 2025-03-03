@@ -8,7 +8,7 @@ import com.siupay.merchant.admin.dto.request.QueryAdminOrdersFilterRequest;
 import com.siupay.merchant.admin.dto.request.QueryMerchantsFilterRequest;
 
 /**
- * @Author: ce.liu
+ * 
  * @Date: 2022/8/20 23:11
  */
 public interface AdminMerchantQueryService {

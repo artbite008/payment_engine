@@ -11,7 +11,7 @@ import java.util.Objects;
 /**
  * @program: deposit
  * @description: 获取用户基本信息
- * @author: Sandy
+ * 
  * @create: 2021-05-11 15:39
  **/
 @Component
